@@ -1,18 +1,16 @@
+# accounts/views.py
 from django.shortcuts import render, redirect
-from .forms import CustomUserCreationForm
 from django.contrib import messages
-from django.contrib.auth import views as auth_views
+from .forms import CustomUserCreationForm
 
-# Create your views here.
+
 def signup(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("accounts:signup_success")
+            messages.success(request, "Account created successfully. You can log in now.")
+            return redirect("accounts:login")
     else:
         form = CustomUserCreationForm()
     return render(request, "accounts/signup.html", {"form": form})
-
-def signup_success(request):
-    return render(request, "accounts/signup_success.html")

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home|UHI{% endblock %}
 
@@ -59,12 +60,12 @@
             <div class="col-md-2">
               <div class="event-date">
                 <span class="month">OCT</span>
-                <span class="day">28</span>
+                <span class="day">17</span>
               </div>
             </div>
             <div class="col-md-8">
-              <h3>Open Campus Day</h3>
-              <p>Experience our vibrant campus life, meet faculty members, and learn about our academic programs.</p>
+              <h3>International Day for the Eradication of Poverty</h3>
+              <p>Be the reason a child goes to school this term. Partner with us to provide supplies and support struggling families.</p>
             </div>
             <div class="col-md-2">
               <a href="#" class="btn-register">Register</a>
@@ -74,4 +75,59 @@
       </div>
 
     </section><!-- /Hero Section -->
+
+
+       <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-6">
+            <div class="content">
+              <h3>17 Years of Impact</h3>
+              <p>We go where help is hardest to deliver — in disaster zones, conflict areas, and underserved communities — ensuring no one is left behind, Through the united efforts of volunteers, donors, and partners, we transform empathy into real, measurable impact that saves and restores lives.</p>
+
+              <div class="stats-row">
+                <div class="stat-item">
+                  <div class="number">250,000+</div>
+                  <div class="label">Lives Touched</div>
+                </div>
+                <div class="stat-item">
+                  <div class="number">75+</div>
+                  <div class="label"> Partnerships</div>
+                </div>
+                <div class="stat-item">
+                  <div class="number">500+ </div>
+                  <div class="label">Volunteers Mobilized</div>
+                </div>
+              </div>
+
+              <div class="mission-statement">
+                <p><em>"Our mission is to inspire compassion, empower communities, and create lasting change by addressing urgent needs and fostering hope for a better tomorrow."</em></p>
+              </div>
+
+              <a href="about.html" class="btn-learn-more">
+                Learn More About Us
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="image-wrapper">
+              <img src="{% static 'assets/img/education/content-project-1.jpg' %}" alt="Campus Overview" class="img-fluid">
+              <div class="experience-badge">
+                <div class="years">17+</div>
+                <div class="text">Years of Excellence</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
 {% endblock %}

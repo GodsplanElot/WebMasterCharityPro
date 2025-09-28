@@ -29,26 +29,26 @@
 
   <!-- You can add more head blocks if needed -->
   {% block extra_head %}{% endblock %}
+
 </head>
 
 <body class="index-page">
 
+<!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="{% url 'pages:home' %}" class="logo d-flex align-items-center">
-        <!-- To use an image logo: put file at static/assets/img/logo.webp and uncomment below -->
-        <!-- <img src="{% static 'assets/img/logo.webp' %}" alt="logo" class="img-fluid"> -->
-        <i class="bi bi-buildings"></i>
-        <h1 class="sitename">MySchool</h1>
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="{% static 'assets/img/logo.png' %}" alt="">
+        <!-- <i class="bi bi-buildings"></i> -->
+        <h1 class="sitename">United Hands Initiative</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{% url 'pages:home' %}" class="active">Home</a></li>
-
-          <li class="dropdown">
-            <a href="{% url 'pages:about' %}"><span>About</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="{% url 'pages:home' %}" class="active">Welcome</a></li>
+          <li class="dropdown"><a href="{% url 'pages:about' %}"><span>Our Team</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="{% url 'pages:about' %}">About Us</a></li>
               <li><a href="#">Admissions</a></li>
@@ -58,46 +58,43 @@
             </ul>
           </li>
 
-          <li><a href="#">Students Life</a></li>
-          <li><a href="#">News</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#">Alumni</a></li>
-
-          <li class="dropdown">
-            <a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Policy</a></li>
+          <li class="dropdown"><a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">News Details</a></li>
-              <li><a href="#">Event Details</a></li>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Error 404</a></li>
-              <li><a href="#">Starter Page</a></li>
+              <li><a href="news-details.html">News Details</a></li>
+              <li><a href="event-details.html">Event Details</a></li>
+              <li><a href="privacy.html">Privacy</a></li>
+              <li><a href="terms-of-service.html">Terms of Service</a></li>
+              <li><a href="404.html">Error 404</a></li>
+              <li><a href="starter-page.html">Starter Page</a></li>
             </ul>
           </li>
 
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li>
           <li><a href="{% url 'pages:contact' %}">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <!-- Right side auth links (inlined for clarity) -->
-      <div class="d-flex align-items-center">
-        {% if user.is_authenticated %}
-          <a class="me-3" href="{% url 'secured:dashboard' %}">Dashboard</a>
-          <a class="me-3" href="{% url 'UserPorile:wizard_start' %}">Profile</a>
-
-          <form method="post" action="{% url 'accounts:logout' %}" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-link p-0">Logout</button>
-          </form>
-        {% else %}
-          <a class="me-3" href="{% url 'accounts:login' %}">Login</a>
-          <a class="me-3" href="{% url 'accounts:signup' %}">Sign Up</a>
-        {% endif %}
-      </div>
-
     </div>
-  </header>    
+  </header>
 
 
   {% block content %}{% endblock %}
@@ -113,7 +110,7 @@
           <div class="col-lg-5">
             <div class="brand-section">
               <a href="{% url 'pages:home' %}" class="logo d-flex align-items-center mb-4">
-                <span class="sitename">MySchool</span>
+                <span class="sitename">UHI - United Hands Initiative</span>
               </a>
               <p class="brand-description">Crafting exceptional digital experiences through thoughtful design and innovative solutions that elevate your brand presence.</p>
 

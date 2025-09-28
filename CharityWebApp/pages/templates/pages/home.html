@@ -1,13 +1,77 @@
 {% extends 'base.html' %}
 
-{% block title %}Home - MySchool{% endblock %}
+{% block title %}Home|UHI{% endblock %}
 
 {% block content %}
-<section class="hero">
-  <div class="container text-center">
-    <h2>Welcome to MySchool Charity</h2>
-    <p>Making the world a better place together.</p>
-    <p>Hush PuPi</p>
-  </div>
-</section>
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>Compassion unites, action empowers all.</h1>
+          <p>Because we are united, compassionate, and driven by humanity, we reach those in need when others cannot—offering relief, restoring dignity, protecting lives, and standing with people whose worlds have been shattered by hardship, conflict, or disaster.</p>
+          <div class="cta-buttons">
+            <a href="#" class="btn-apply">Donate ❤</a>
+            <a href="#" class="btn-tour">Join Us</a>
+          </div>
+          <div class="announcement">
+            <div class="announcement-badge">New</div>
+            <p>Go-Fund Donations are now open.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlights-container container">
+        <div class="row gy-4">
+          <div class="col-md-4">
+            <div class="highlight-item">
+              <div class="icon">
+                <i class="bi bi-house-heart"></i>
+              </div>
+              <h3>Communities Rebuilt</h3>
+              <p>We’ve helped restore schools, health centers, and safe shelters for displaced families — giving thousands a place to call home again.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="highlight-item">
+              <div class="icon">
+                <i class="bi bi-heart-pulse"></i>
+              </div>
+              <h3>Lives Supported</h3>
+              <p>Through food drives, medical aid, and social programs, we’ve provided hope and essentials to vulnerable groups when they needed it most.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="highlight-item">
+              <div class="icon">
+                <i class="bi bi-globe-americas"></i>
+              </div>
+              <h3>Futures Empowered</h3>
+              <p>By investing in education, skills training, and youth development, we’re empowering the next generation to rise above hardship.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-banner">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-2">
+              <div class="event-date">
+                <span class="month">OCT</span>
+                <span class="day">28</span>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h3>Open Campus Day</h3>
+              <p>Experience our vibrant campus life, meet faculty members, and learn about our academic programs.</p>
+            </div>
+            <div class="col-md-2">
+              <a href="#" class="btn-register">Register</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
 {% endblock %}

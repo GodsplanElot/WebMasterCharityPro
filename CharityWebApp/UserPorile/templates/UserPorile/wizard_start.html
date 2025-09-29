@@ -1,9 +1,136 @@
-{% extends "base.html" %}
-{% block title %}Profile Wizard - Start{% endblock %}
+{% extends "secured/base_secured.html" %}
+
+{% block title %}Profile Wizard{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-  <h2>Profile setup (placeholder)</h2>
-  <p>This is where the profile multi-step wizard will start. We'll replace it with the real wizard next.</p>
-</div>
+<div class="pagetitle">
+  <h1>Setup Wizard</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item">User</li>
+      <li class="breadcrumb-item active">Setup Wizard</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Complete Your Profile</h5>
+
+          <!-- Wizard Progress -->
+          <div class="progress mb-4">
+            <div class="progress-bar" role="progressbar" style="width: 33%;" id="wizardProgress">
+              Step 1 of 3
+            </div>
+          </div>
+
+          <!-- Wizard Form -->
+          <form id="setupWizard" class="row g-3 needs-validation" novalidate>
+            
+            <!-- Step 1 -->
+            <div class="wizard-step" id="step1">
+              <h6 class="mb-3">Personal Information</h6>
+              <div class="col-md-6">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullName" required>
+                <div class="invalid-feedback">Full name is required</div>
+              </div>
+              <div class="col-md-6">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" required>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="wizard-step d-none" id="step2">
+              <h6 class="mb-3">Contact Information</h6>
+              <div class="col-md-6">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" class="form-control" id="phone" required>
+              </div>
+              <div class="col-md-6">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" required>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="wizard-step d-none" id="step3">
+              <h6 class="mb-3">Preferences</h6>
+              <div class="col-12">
+                <label for="language" class="form-label">Preferred Language</label>
+                <select id="language" class="form-select" required>
+                  <option value="">Choose...</option>
+                  <option>English</option>
+                  <option>French</option>
+                  <option>Spanish</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="terms" required>
+                  <label class="form-check-label" for="terms">
+                    I agree to the terms and conditions
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="col-12 text-end mt-3">
+              <button type="button" class="btn btn-secondary d-none" id="prevBtn">Previous</button>
+              <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+              <button type="submit" class="btn btn-success d-none" id="submitBtn">Finish</button>
+            </div>
+          </form>
+          <!-- End Wizard Form -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 3;
+
+  function showStep(step) {
+    document.querySelectorAll('.wizard-step').forEach(s => s.classList.add('d-none'));
+    document.getElementById(`step${step}`).classList.remove('d-none');
+
+    document.getElementById('prevBtn').classList.toggle('d-none', step === 1);
+    document.getElementById('nextBtn').classList.toggle('d-none', step === totalSteps);
+    document.getElementById('submitBtn').classList.toggle('d-none', step !== totalSteps);
+
+    document.getElementById('wizardProgress').style.width = `${(step / totalSteps) * 100}%`;
+    document.getElementById('wizardProgress').innerText = `Step ${step} of ${totalSteps}`;
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    if (currentStep < totalSteps) { currentStep++; showStep(currentStep); }
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    if (currentStep > 1) { currentStep--; showStep(currentStep); }
+  });
+
+  document.getElementById('setupWizard').addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!e.target.checkValidity()) {
+      e.stopPropagation();
+      e.target.classList.add('was-validated');
+    } else {
+      alert('Form submitted successfully!');
+    }
+  });
+
+  showStep(currentStep);
+</script>
+
 {% endblock %}

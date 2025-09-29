@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% block title %}Auth Page{% endblock %}</title>
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'secured/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'secured/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'secured/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'secured/assets/vendor/quill/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'secured/assets/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+  <link href="{% static 'secured/assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'secured/assets/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+
+  <!-- Main Template CSS -->
+  <link href="{% static 'secured/assets/css/style.css' %}" rel="stylesheet">
+
+  {% block extra_css %}{% endblock %}
+</head>
+
+<body class="bg-light">
+  {% block content %}{% endblock %}
+
+  <!-- Vendor JS -->
+  <script src="{% static 'secured/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'secured/assets/js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -51,16 +51,14 @@
           <li class="dropdown"><a href="{% url 'pages:about' %}"><span>Our Team</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="{% url 'pages:about' %}">About Us</a></li>
-              <li><a href="#">Admissions</a></li>
-              <li><a href="#">Academics</a></li>
-              <li><a href="#">Faculty &amp; Staff</a></li>
+              <li><a href="{% url 'pages:staff_info' %}">Faculty &amp; Staff</a></li>
               <li><a href="#">Campus &amp; Facilities</a></li>
             </ul>
           </li>
 
           <li><a href="#">Projects</a></li>
           <li><a href="#">Policy</a></li>
-          <li class="dropdown"><a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+<!--           <li class="dropdown"><a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="news-details.html">News Details</a></li>
               <li><a href="event-details.html">Event Details</a></li>
@@ -69,9 +67,9 @@
               <li><a href="404.html">Error 404</a></li>
               <li><a href="starter-page.html">Starter Page</a></li>
             </ul>
-          </li>
+          </li> -->
 
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+<!--           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -87,7 +85,8 @@
               <li><a href="#">Dropdown 3</a></li>
               <li><a href="#">Dropdown 4</a></li>
             </ul>
-          </li>
+          </li> -->
+
           <li><a href="{% url 'pages:contact' %}">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

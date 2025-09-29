@@ -11,3 +11,6 @@ def about(request):
 def contact(request):
     # Dummy contact page - no real processing (you asked simple)
     return render(request, "pages/contact.html")
+
+def staff_info(request):
+    return render(request, "pages/staff_info.html")

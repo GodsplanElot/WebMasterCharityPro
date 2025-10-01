@@ -11,6 +11,9 @@ def about(request):
 def projects(request):
     return render(request, "pages/projects.html")
 
+def policy(request):
+    return render(request, "pages/policy.html")
+
 def contact(request):
     # Dummy contact page - no real processing (you asked simple)
     return render(request, "pages/contact.html")

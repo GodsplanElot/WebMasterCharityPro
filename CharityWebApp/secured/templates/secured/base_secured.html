@@ -110,18 +110,18 @@
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'secured:dashboard' %}">
-          <i class="bi bi-grid"></i><span>Dashboard</span>
-        </a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'secured:dashboard' %}">
           <i class="bi bi-grid"></i><span>Dashboard</span>
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'secured:dashboard' %}">
+          <i class="bi bi-grid"></i><span>Profile</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'profile:wizard_start' %}">
-          <i class="bi bi-person"></i><span>Profile Wizard</span>
+          <i class="bi bi-person"></i><span>Verification</span>
         </a>
       </li>
     </ul>

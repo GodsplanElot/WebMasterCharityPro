@@ -21,6 +21,22 @@
             </div>
             <!-- End Logo -->
 
+            <!-- ✅ Success / Error messages -->
+            {% if messages %}
+              <div class="w-100">
+                {% for message in messages %}
+                  <div 
+                    class="alert alert-{{ message.tags }} alert-dismissible fade show" 
+                    role="alert"
+                  >
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+            <!-- End Messages -->
+
             <div class="card mb-3">
               <div class="card-body">
                 <div class="pt-4 pb-2">
@@ -30,34 +46,62 @@
 
                 <form method="post" class="row g-3 needs-validation" novalidate>
                   {% csrf_token %}
-                  {{ form.non_field_errors }}
+
+                  <!-- ✅ Form-wide errors -->
+                  {% if form.non_field_errors %}
+                    <div class="alert alert-danger w-100" role="alert">
+                      {{ form.non_field_errors }}
+                    </div>
+                  {% endif %}
 
                   <div class="col-12">
                     {{ form.email.label_tag }}
                     {{ form.email }}
-                    {{ form.email.errors }}
+                    {% if form.email.errors %}
+                      <div class="text-danger small">
+                        {{ form.email.errors }}
+                      </div>
+                    {% endif %}
                   </div>
 
                   <div class="col-12">
                     {{ form.first_name.label_tag }}
                     {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                      <div class="text-danger small">
+                        {{ form.first_name.errors }}
+                      </div>
+                    {% endif %}
                   </div>
 
                   <div class="col-12">
                     {{ form.last_name.label_tag }}
                     {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                      <div class="text-danger small">
+                        {{ form.last_name.errors }}
+                      </div>
+                    {% endif %}
                   </div>
 
                   <div class="col-12">
                     {{ form.password1.label_tag }}
                     {{ form.password1 }}
-                    {{ form.password1.errors }}
+                    {% if form.password1.errors %}
+                      <div class="text-danger small">
+                        {{ form.password1.errors }}
+                      </div>
+                    {% endif %}
                   </div>
 
                   <div class="col-12">
                     {{ form.password2.label_tag }}
                     {{ form.password2 }}
-                    {{ form.password2.errors }}
+                    {% if form.password2.errors %}
+                      <div class="text-danger small">
+                        {{ form.password2.errors }}
+                      </div>
+                    {% endif %}
                   </div>
 
                   <div class="col-12">
@@ -74,6 +118,7 @@
 
               </div>
             </div>
+
             <div class="credits small text-center">
               Back <a href="{% url 'pages:home' %}">Home</a>
             </div>

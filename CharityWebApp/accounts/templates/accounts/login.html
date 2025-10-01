@@ -26,6 +26,23 @@
                   <p class="text-center small">Enter your username & password to login</p>
                 </div>
 
+
+
+            {% if messages %}
+              <div class="container">
+                {% for message in messages %}
+                  <div 
+                    class="alert alert-{{ message.tags }} alert-dismissible fade show" 
+                    role="alert"
+                  >
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+
                 <form method="post" class="row g-3 needs-validation" novalidate>
                   {% csrf_token %}
                   {{ form.non_field_errors }}
@@ -67,7 +84,7 @@
             </div>
 
             <div class="credits small text-center">
-              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              Back <a href="{% url 'pages:home' %}">Home</a>
             </div>
 
           </div>

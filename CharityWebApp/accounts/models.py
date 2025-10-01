@@ -35,24 +35,27 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-class CustomUser(AbstractBaseUser, PermissionsMixin):
-    """
-    Minimal custom user model that uses email as the unique identifier.
-    """
+# accounts/models.py
 
+class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, max_length=255)
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
 
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)  # toggle if you want to deactivate accounts
+    is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
     objects = CustomUserManager()
 
-    # make email the unique identifier for auth
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []  # email is required by USERNAME_FIELD, add others if needed
+    REQUIRED_FIELDS = []
 
     def __str__(self):
         return self.email
+
+    def get_full_name(self):
+        """Return first + last name if available, otherwise email."""
+        full_name = f"{self.first_name} {self.last_name}".strip()
+        return full_name if full_name else self.email
+

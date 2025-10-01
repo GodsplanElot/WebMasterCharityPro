@@ -1,31 +1,225 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>UHI Staff Portal</title>
-    <link href="{% static 'secured/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-</head>
-<body class="bg-light">
 
-    <div class="container py-5">
-        <div class="text-center mb-4">
-            <h1 class="fw-bold">Welcome to UHI Staff Portal</h1>
-            <p class="lead">This portal is dedicated to staff of UHI. Here you can access your dashboard, manage your profile, and connect with the charity network.</p>
+{% block title %}About UHI{% endblock %}
+
+{% block content %}
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1 class="heading-title">Faculty Staff</h1>
+              <p class="mb-0">
+                Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo
+                odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum
+                debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat
+                ipsum dolorem.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Faculty Staff</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Faculty  Staff Section -->
+    <section id="faculty--staff" class="faculty--staff section">
+
+      <div class="container">
+
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-6">
+            <div class="faculty-search-bar">
+              <div class="search-input-wrapper">
+                <i class="bi bi-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Find faculty by name or expertise...">
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="d-flex justify-content-center gap-3">
-            <!-- Login button -->
-            <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-lg">
+        <div class="faculty-showcase">
+          <div class="row g-5">
+            <!-- Featured Faculty Member -->
+            <div class="col-12 mb-5">
+              <div class="featured-faculty">
+                <div class="row align-items-center">
+                  <div class="col-lg-4">
+                    <div class="featured-image">
+                      <img src="assets/img/person/person-f-2.webp" class="img-fluid" alt="Featured Faculty">
+                    </div>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="featured-content">
+                      <div class="faculty-badge">Featured Faculty</div>
+                      <h2>Dr. Elena Rodriguez</h2>
+                      <p class="title">Dean of Engineering &amp; Professor of Mechanical Engineering</p>
+                      <p class="biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      <div class="expertise-areas">
+                        <span>Robotics</span>
+                        <span>Renewable Energy</span>
+                        <span>Sustainable Design</span>
+                      </div>
+                      <div class="contact-actions">
+                        <a href="#" class="contact-btn">Contact</a>
+                        <div class="social-links">
+                          <a href="#"><i class="bi bi-linkedin"></i></a>
+                          <a href="#"><i class="bi bi-envelope"></i></a>
+                          <a href="#"><i class="bi bi-globe"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Faculty List -->
+            <div class="col-lg-6">
+              <div class="faculty-profile">
+                <div class="profile-image">
+                  <img src="assets/img/person/person-m-9.webp" class="img-fluid" alt="Faculty">
+                </div>
+                <div class="profile-content">
+                  <h3>Dr. Marcus Thompson</h3>
+                  <p class="position">Professor of Computer Science</p>
+                  <div class="department-info">School of Technology</div>
+                  <div class="research-focus">
+                    <span>Artificial Intelligence</span>
+                    <span>Data Science</span>
+                  </div>
+                </div>
+                <div class="profile-actions">
+                  <a href="#" class="view-profile">View Profile</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="faculty-profile">
+                <div class="profile-image">
+                  <img src="assets/img/person/person-f-7.webp" class="img-fluid" alt="Faculty">
+                </div>
+                <div class="profile-content">
+                  <h3>Dr. Sophia Chang</h3>
+                  <p class="position">Associate Professor of Biology</p>
+                  <div class="department-info">Department of Life Sciences</div>
+                  <div class="research-focus">
+                    <span>Marine Biology</span>
+                    <span>Ecology</span>
+                  </div>
+                </div>
+                <div class="profile-actions">
+                  <a href="#" class="view-profile">View Profile</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="faculty-profile">
+                <div class="profile-image">
+                  <img src="assets/img/person/person-m-14.webp" class="img-fluid" alt="Faculty">
+                </div>
+                <div class="profile-content">
+                  <h3>Dr. James Anderson</h3>
+                  <p class="position">Assistant Professor of Physics</p>
+                  <div class="department-info">Department of Physical Sciences</div>
+                  <div class="research-focus">
+                    <span>Quantum Computing</span>
+                    <span>Theoretical Physics</span>
+                  </div>
+                </div>
+                <div class="profile-actions">
+                  <a href="#" class="view-profile">View Profile</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="faculty-profile">
+                <div class="profile-image">
+                  <img src="assets/img/person/person-f-11.webp" class="img-fluid" alt="Faculty">
+                </div>
+                <div class="profile-content">
+                  <h3>Dr. Rachel Kim</h3>
+                  <p class="position">Professor of Psychology</p>
+                  <div class="department-info">College of Social Sciences</div>
+                  <div class="research-focus">
+                    <span>Cognitive Psychology</span>
+                    <span>Behavioral Analysis</span>
+                  </div>
+                </div>
+                <div class="profile-actions">
+                  <a href="#" class="view-profile">View Profile</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="faculty-profile">
+                <div class="profile-image">
+                  <img src="assets/img/person/person-m-6.webp" class="img-fluid" alt="Faculty">
+                </div>
+                <div class="profile-content">
+                  <h3>Dr. David Wilson</h3>
+                  <p class="position">Associate Professor of Economics</p>
+                  <div class="department-info">Business School</div>
+                  <div class="research-focus">
+                    <span>Financial Markets</span>
+                    <span>Economic Policy</span>
+                  </div>
+                </div>
+                <div class="profile-actions">
+                  <a href="#" class="view-profile">View Profile</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="faculty-profile">
+                <div class="profile-image">
+                  <img src="assets/img/person/person-f-13.webp" class="img-fluid" alt="Faculty">
+                </div>
+                <div class="profile-content">
+                  <h3>Dr. Isabella Martinez</h3>
+                  <p class="position">Assistant Professor of Literature</p>
+                  <div class="department-info">College of Humanities</div>
+                  <div class="research-focus">
+                    <span>Contemporary Fiction</span>
+                    <span>Cultural Studies</span>
+                  </div>
+                </div>
+                <div class="profile-actions">
+                  <a href="#" class="view-profile">View Profile</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="load-more-section text-center mt-5">
+            <a href="{% url 'accounts:login' %}" class="load-more-btn">
                 Log In to Your Staff Account
             </a>
-
+        </div>
+        <div class="load-more-section text-center mt-5">
             <!-- Register button -->
-            <a href="{% url 'accounts:signup' %}" class="btn btn-outline-secondary btn-lg">
+            <a href="{% url 'accounts:signup' %}" class="load-more-btn">
                 Create an Account
             </a>
         </div>
-    </div>
 
-</body>
-</html>
+      </div>
+
+    </section><!-- /Faculty  Staff Section -->
+    {% endblock %}

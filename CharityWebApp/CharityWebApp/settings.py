@@ -137,8 +137,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Auth redirects (tweak as desired later)
 LOGIN_URL = "accounts:login"
-LOGIN_REDIRECT_URL = "secured:dashboard"
+LOGIN_REDIRECT_URL = "accounts:signup_success"   # changed from secured:dashboard
 LOGOUT_REDIRECT_URL = "pages:home"
+
 
 # IMPORTANT: point to the custom user model (do this BEFORE the first migrate)
 AUTH_USER_MODEL = "accounts.CustomUser"

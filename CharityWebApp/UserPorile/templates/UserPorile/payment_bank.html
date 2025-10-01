@@ -1,0 +1,101 @@
+{% extends "secured/base_secured.html" %}
+{% load static %}
+{% block title %}Wizard — Bank Details{% endblock %}
+
+{% block content %}
+<div class="pagetitle">
+  <h1>Complete Your Profile</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'secured:dashboard' %}">Home</a></li>
+      <li class="breadcrumb-item">Wizard</li>
+      <li class="breadcrumb-item active">Bank Details</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Step 4: Bank Account Information</h5>
+          <p class="small text-muted">Provide your banking details. This will remain confidential.</p>
+
+          <form method="post" novalidate class="row g-3">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.bank_name.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-bank"></i></span>
+                {{ form.bank_name }}
+              </div>
+              <div class="text-danger small">{{ form.bank_name.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.account_number.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-hash"></i></span>
+                {{ form.account_number }}
+              </div>
+              <div class="text-danger small">{{ form.account_number.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.account_name.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                {{ form.account_name }}
+              </div>
+              <div class="text-danger small">{{ form.account_name.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.routing_number.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-diagram-3"></i></span>
+                {{ form.routing_number }}
+              </div>
+              <div class="text-danger small">{{ form.routing_number.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.iban.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-credit-card-2-back"></i></span>
+                {{ form.iban }}
+              </div>
+              <div class="text-danger small">{{ form.iban.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.ssn.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                {{ form.ssn }}
+              </div>
+              <div class="text-danger small">{{ form.ssn.errors }}</div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="text-end">
+              <a class="btn btn-secondary" href="{% url 'profile:professional' %}">
+                <i class="bi bi-arrow-left-circle"></i> Back
+              </a>
+              <button class="btn btn-primary" type="submit">
+                Save & Continue <i class="bi bi-arrow-right-circle"></i>
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

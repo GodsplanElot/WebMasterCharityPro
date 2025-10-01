@@ -1,0 +1,89 @@
+{% extends "secured/base_secured.html" %}
+{% load static %}
+{% block title %}Wizard — Professional Info{% endblock %}
+
+{% block content %}
+<div class="pagetitle">
+  <h1>Complete Your Profile</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'secured:dashboard' %}">Home</a></li>
+      <li class="breadcrumb-item">Wizard</li>
+      <li class="breadcrumb-item active">Professional Info</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Step 3: Professional Information</h5>
+          <p class="small text-muted">Tell us about your work, skills, and background.</p>
+
+          <form method="post" novalidate class="row g-3">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.occupation.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
+                {{ form.occupation }}
+              </div>
+              <div class="text-danger small">{{ form.occupation.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.organization.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-building"></i></span>
+                {{ form.organization }}
+              </div>
+              <div class="text-danger small">{{ form.organization.errors }}</div>
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label">{{ form.bio.label }}</label>
+              {{ form.bio }}
+              <div class="text-danger small">{{ form.bio.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.languages_spoken.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-translate"></i></span>
+                {{ form.languages_spoken }}
+              </div>
+              <div class="text-danger small">{{ form.languages_spoken.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.skills.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-tools"></i></span>
+                {{ form.skills }}
+              </div>
+              <div class="text-danger small">{{ form.skills.errors }}</div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="text-end">
+              <a class="btn btn-secondary" href="{% url 'profile:address' %}">
+                <i class="bi bi-arrow-left-circle"></i> Back
+              </a>
+              <button class="btn btn-primary" type="submit">
+                Save & Continue <i class="bi bi-arrow-right-circle"></i>
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

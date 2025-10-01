@@ -1,0 +1,101 @@
+{% extends "secured/base_secured.html" %}
+{% load static %}
+{% block title %}Wizard — Address Info{% endblock %}
+
+{% block content %}
+<div class="pagetitle">
+  <h1>Complete Your Profile</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'secured:dashboard' %}">Home</a></li>
+      <li class="breadcrumb-item">Wizard</li>
+      <li class="breadcrumb-item active">Address Info</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Step 2: Address Information</h5>
+          <p class="small text-muted">Please provide your current address details.</p>
+
+          <form method="post" novalidate class="row g-3">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="col-md-12">
+              <label class="form-label">{{ form.address_line1.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                {{ form.address_line1 }}
+              </div>
+              <div class="text-danger small">{{ form.address_line1.errors }}</div>
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label">{{ form.address_line2.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-geo"></i></span>
+                {{ form.address_line2 }}
+              </div>
+              <div class="text-danger small">{{ form.address_line2.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.city.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-building"></i></span>
+                {{ form.city }}
+              </div>
+              <div class="text-danger small">{{ form.city.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.state.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-geo-fill"></i></span>
+                {{ form.state }}
+              </div>
+              <div class="text-danger small">{{ form.state.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.country.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-flag"></i></span>
+                {{ form.country }}
+              </div>
+              <div class="text-danger small">{{ form.country.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.postal_code.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-mailbox"></i></span>
+                {{ form.postal_code }}
+              </div>
+              <div class="text-danger small">{{ form.postal_code.errors }}</div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="text-end">
+              <a class="btn btn-secondary" href="{% url 'profile:personal' %}">
+                <i class="bi bi-arrow-left-circle"></i> Back
+              </a>
+              <button class="btn btn-primary" type="submit">
+                Save & Continue <i class="bi bi-arrow-right-circle"></i>
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

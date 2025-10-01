@@ -72,6 +72,13 @@ class Profile(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
 
+    # New field: Setup completion
+    completed = models.BooleanField(default=False)
+
     def __str__(self):
         names = " ".join(filter(None, [self.first_name, self.middle_name, self.other_names]))
-        return f"{names or self.user.get_full_name() or self.user.email}"
+        if names:
+            return names
+        if hasattr(self.user, "get_full_name"):
+            return self.user.get_full_name()
+        return self.user.email

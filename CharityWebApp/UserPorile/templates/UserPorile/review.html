@@ -1,0 +1,44 @@
+{% extends "secured/base_secured.html" %}
+{% load static %}
+{% block title %}Wizard — Review & Complete{% endblock %}
+
+{% block content %}
+<div class="pagetitle">
+  <h1>Profile Setup Completed</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'secured:dashboard' %}">Home</a></li>
+      <li class="breadcrumb-item">Wizard</li>
+      <li class="breadcrumb-item active">Review & Complete</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title text-success"><i class="bi bi-check-circle-fill"></i> Profile Completed</h5>
+          <p class="lead">Congratulations! 🎉 You have successfully completed your profile setup.</p>
+
+          <p class="small text-muted">
+            Your details have been submitted and are now under review by our team.  
+            Please allow up to <strong>5 hours</strong> for verification.  
+            You will receive an update via email once the process is complete.
+          </p>
+
+          <!-- Back to Home Button -->
+          <div class="mt-4">
+            <a href="{% url 'pages:home' %}" class="btn btn-primary">
+              <i class="bi bi-house-door"></i> Return to Home
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

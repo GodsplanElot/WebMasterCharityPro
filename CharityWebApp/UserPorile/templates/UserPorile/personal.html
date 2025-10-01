@@ -1,0 +1,119 @@
+{% extends "secured/base_secured.html" %}
+{% load static %}
+{% block title %}Wizard — Personal Info{% endblock %}
+
+{% block content %}
+<div class="pagetitle">
+  <h1>Complete Your Profile</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'secured:dashboard' %}">Home</a></li>
+      <li class="breadcrumb-item">Wizard</li>
+      <li class="breadcrumb-item active">Personal Info</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Step 1: Personal Information</h5>
+          <p class="small text-muted">Please provide your personal details to continue.</p>
+
+          <form method="post" novalidate class="row g-3">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <!-- Name fields -->
+            <div class="col-md-4">
+              <label class="form-label">{{ form.first_name.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                {{ form.first_name }}
+              </div>
+              <div class="text-danger small">{{ form.first_name.errors }}</div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">{{ form.middle_name.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                {{ form.middle_name }}
+              </div>
+              <div class="text-danger small">{{ form.middle_name.errors }}</div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">{{ form.other_names.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                {{ form.other_names }}
+              </div>
+              <div class="text-danger small">{{ form.other_names.errors }}</div>
+            </div>
+
+            <!-- DOB, Gender, Marital -->
+            <div class="col-md-4">
+              <label class="form-label">{{ form.date_of_birth.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-calendar-date"></i></span>
+                {{ form.date_of_birth }}
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">{{ form.gender.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-gender-ambiguous"></i></span>
+                {{ form.gender }}
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">{{ form.marital_status.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-heart"></i></span>
+                {{ form.marital_status }}
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="col-md-6">
+              <label class="form-label">{{ form.phone_number.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                {{ form.phone_number }}
+              </div>
+              <div class="text-danger small">{{ form.phone_number.errors }}</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">{{ form.alternate_email.label }}</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                {{ form.alternate_email }}
+              </div>
+              <div class="text-danger small">{{ form.alternate_email.errors }}</div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="text-end">
+              <a class="btn btn-secondary" href="{% url 'profile:wizard_start' %}">
+                <i class="bi bi-x-circle"></i> Cancel
+              </a>
+              <button class="btn btn-primary" type="submit">
+                Save & Continue <i class="bi bi-arrow-right-circle"></i>
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

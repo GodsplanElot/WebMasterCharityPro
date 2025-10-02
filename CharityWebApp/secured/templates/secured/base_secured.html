@@ -106,27 +106,56 @@
   </header>
   <!-- End Header -->
 
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-    <ul class="sidebar-nav" id="sidebar-nav">
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'secured:dashboard' %}">
-          <i class="bi bi-grid"></i><span>Dashboard</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'secured:dashboard' %}">
-          <i class="bi bi-person"></i><span>Profile</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'profile:wizard_start' %}">
-          <i class="bi bi-patch-check"></i><span>Verification</span>
-        </a>
-      </li>
-    </ul>
-  </aside>
-  <!-- End Sidebar -->
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+
+
+    {% if user.is_authenticated %}
+      {% if user.profile.is_verified and user.profile.completed %}
+        <!-- ✅ User verified + completed setup: show everything -->
+
+           
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'secured:dashboard' %}">
+            <i class="bi bi-grid"></i><span>Dashboard</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#">
+            <i class="bi bi-person"></i><span>Profile</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#">
+            <i class="bi bi-envelope"></i><span>Inbox</span>
+          </a>
+        </li>
+
+        <!-- Add other secured links here -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#">
+            <i class="bi bi-telephone"></i><span>Contact</span>
+          </a>
+        </li>
+
+      {% else %}
+        <!-- 🚫 User NOT verified yet: only show Verification -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'profile:wizard_start' %}">
+            <i class="bi bi-patch-check"></i><span>Verification</span>
+          </a>
+        </li>
+      {% endif %}
+    {% endif %}
+
+  </ul>
+</aside>
+<!-- End Sidebar -->
+
 
   <!-- ======= Main ======= -->
   <main id="main" class="main">

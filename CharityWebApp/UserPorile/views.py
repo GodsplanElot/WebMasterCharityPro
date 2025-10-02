@@ -5,14 +5,21 @@ from .models import Profile
 from .forms import (PersonalInfoForm, AddressForm, ProfessionalForm,
                     PaymentBankForm, PaymentCardForm, MediaForm)
 
-
 @login_required
 def wizard_start(request):
-    # entry page; send to personal step if not completed
     profile, _ = Profile.objects.get_or_create(user=request.user)
+
+    # If setup is completed → go straight to dashboard
     if profile.setup_completed:
         return redirect("secured:dashboard")
-    return redirect("profile:personal")
+
+    # Show the wizard start page first
+    if request.method == "GET":
+        return render(request, "UserPorile/wizard_start.html", {"profile": profile})
+
+    # If the user clicks "continue" on the wizard start page → go to personal step
+    if request.method == "POST":
+        return redirect("profile:personal")
 
 
 @login_required

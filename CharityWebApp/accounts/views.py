@@ -36,10 +36,10 @@ class CustomLoginView(LoginView):
         profile = getattr(user, "profile", None)
 
         if not profile:
-            return reverse("UserPorile:wizard_start")
+            return reverse("UserProfile:wizard_start")
 
         if not profile.completed:
-            return reverse("UserPorile:wizard_start")
+            return reverse("UserProfile:wizard_start")
 
         if not profile.is_verified:   # ✅ use the correct field name
             return reverse("accounts:not_verified")

@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     'pages',
     'accounts',
-    'UserPorile',
+    'UserProfile',
     'secured',
 ]
 

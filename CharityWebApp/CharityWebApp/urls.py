@@ -7,7 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include(("pages.urls", "pages"), namespace="pages")),
     path("accounts/", include(("accounts.urls", "accounts"), namespace="accounts")),
-    path("UserPorile/", include(("UserPorile.urls", "UserPorile"), namespace="UserPorile")),
+    path("UserProfile/", include(("UserProfile.urls", "UserProfile"), namespace="UserProfile")),
     path("secured/", include(("secured.urls", "secured"), namespace="secured")),
 ]
 

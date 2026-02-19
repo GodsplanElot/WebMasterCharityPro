@@ -2,7 +2,7 @@
 {% extends "auth_base.html" %}
 {% load static %}
 
-{% block title %}Sign up{% endblock %}
+{% block title %}Create an Account - Charity Portal{% endblock %}
 
 {% block content %}
 <main>
@@ -15,39 +15,34 @@
             <!-- Logo -->
             <div class="d-flex justify-content-center py-4">
               <a href="{% url 'pages:home' %}" class="logo d-flex align-items-center w-auto">
-                <img src="{% static 'assets/img/logo.png' %}" alt="logo">
-                <span class="d-none d-lg-block">UHI Staff</span>
+                <img src="{% static 'assets/img/logo.png' %}" alt="Charity Portal Logo">
+                <span class="d-none d-lg-block">Charity Portal</span>
               </a>
             </div>
             <!-- End Logo -->
 
-            <!-- ✅ Success / Error messages -->
+            <!-- Messages -->
             {% if messages %}
               <div class="w-100">
                 {% for message in messages %}
-                  <div 
-                    class="alert alert-{{ message.tags }} alert-dismissible fade show" 
-                    role="alert"
-                  >
+                  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
                     {{ message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                 {% endfor %}
               </div>
             {% endif %}
-            <!-- End Messages -->
 
             <div class="card mb-3">
               <div class="card-body">
                 <div class="pt-4 pb-2">
-                  <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                  <p class="text-center small">Enter your details to create your staff account</p>
+                  <h5 class="card-title text-center pb-0 fs-4">Join Our Community</h5>
+                  <p class="text-center small">Create your account to get started</p>
                 </div>
 
                 <form method="post" class="row g-3 needs-validation" novalidate>
                   {% csrf_token %}
 
-                  <!-- ✅ Form-wide errors -->
                   {% if form.non_field_errors %}
                     <div class="alert alert-danger w-100" role="alert">
                       {{ form.non_field_errors }}
@@ -55,81 +50,148 @@
                   {% endif %}
 
                   <div class="col-12">
-                    {{ form.email.label_tag }}
-                    {{ form.email }}
-                    {% if form.email.errors %}
-                      <div class="text-danger small">
-                        {{ form.email.errors }}
-                      </div>
-                    {% endif %}
+                    <label for="id_email" class="form-label">Email Address</label>
+                    <div class="input-group has-validation">
+                      <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                      {{ form.email }}
+                      {% if form.email.errors %}
+                        <div class="invalid-feedback d-block">
+                          {{ form.email.errors }}
+                        </div>
+                      {% endif %}
+                    </div>
                   </div>
 
                   <div class="col-12">
-                    {{ form.first_name.label_tag }}
-                    {{ form.first_name }}
-                    {% if form.first_name.errors %}
-                      <div class="text-danger small">
-                        {{ form.first_name.errors }}
-                      </div>
-                    {% endif %}
+                    <label for="id_first_name" class="form-label">First Name</label>
+                    <div class="input-group has-validation">
+                      <span class="input-group-text"><i class="bi bi-person"></i></span>
+                      {{ form.first_name }}
+                      {% if form.first_name.errors %}
+                        <div class="invalid-feedback d-block">
+                          {{ form.first_name.errors }}
+                        </div>
+                      {% endif %}
+                    </div>
                   </div>
 
                   <div class="col-12">
-                    {{ form.last_name.label_tag }}
-                    {{ form.last_name }}
-                    {% if form.last_name.errors %}
-                      <div class="text-danger small">
-                        {{ form.last_name.errors }}
-                      </div>
-                    {% endif %}
+                    <label for="id_last_name" class="form-label">Last Name</label>
+                    <div class="input-group has-validation">
+                      <span class="input-group-text"><i class="bi bi-person"></i></span>
+                      {{ form.last_name }}
+                      {% if form.last_name.errors %}
+                        <div class="invalid-feedback d-block">
+                          {{ form.last_name.errors }}
+                        </div>
+                      {% endif %}
+                    </div>
                   </div>
 
                   <div class="col-12">
-                    {{ form.password1.label_tag }}
-                    {{ form.password1 }}
-                    {% if form.password1.errors %}
-                      <div class="text-danger small">
-                        {{ form.password1.errors }}
-                      </div>
-                    {% endif %}
+                    <label for="id_password1" class="form-label">Password</label>
+                    <div class="input-group has-validation position-relative">
+                      <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                      {{ form.password1 }}
+                      <button class="btn btn-outline-secondary" type="button" class="toggle-password" data-target="id_password1" title="Show/Hide Password">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                      {% if form.password1.errors %}
+                        <div class="invalid-feedback d-block">
+                          {{ form.password1.errors }}
+                        </div>
+                      {% endif %}
+                    </div>
                   </div>
 
                   <div class="col-12">
-                    {{ form.password2.label_tag }}
-                    {{ form.password2 }}
-                    {% if form.password2.errors %}
-                      <div class="text-danger small">
-                        {{ form.password2.errors }}
-                      </div>
-                    {% endif %}
+                    <label for="id_password2" class="form-label">Confirm Password</label>
+                    <div class="input-group has-validation position-relative">
+                      <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                      {{ form.password2 }}
+                      <button class="btn btn-outline-secondary" type="button" class="toggle-password" data-target="id_password2" title="Show/Hide Password">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                      {% if form.password2.errors %}
+                        <div class="invalid-feedback d-block">
+                          {{ form.password2.errors }}
+                        </div>
+                      {% endif %}
+                    </div>
                   </div>
 
                   <div class="col-12">
-                    <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                    <button class="btn btn-primary w-100" type="submit" id="signupBtn">
+                      <span class="btn-text">Create Account</span>
+                      <span class="spinner-border spinner-border-sm d-none ms-2" role="status" aria-hidden="true"></span>
+                    </button>
                   </div>
 
                   <div class="col-12">
-                    <p class="small mb-0">
-                      Already have an account?
-                      <a href="{% url 'accounts:login' %}">Log in</a>
-                    </p>
+                    <p class="small mb-0">Already have an account? <a href="{% url 'accounts:login' %}">Sign in</a></p>
                   </div>
                 </form>
-
               </div>
             </div>
 
             <div class="credits small text-center">
-              Back <a href="{% url 'pages:home' %}">Home</a>
+              <a href="{% url 'pages:home' %}">← Back to Home</a>
             </div>
-            <div class="credits">
-              <p class="small text-muted mb-0">© 2025 UHI Staff Portal</p>
-            </div>
-
           </div>
         </div>
       </div>
     </section>
   </div>
 </main>
+
+<style>
+  .toggle-password {
+    border-left: none;
+    border-right: 1px solid #dee2e6;
+  }
+  
+  .toggle-password:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .btn[type="submit"]:disabled {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Password visibility toggles
+    const toggleButtons = document.querySelectorAll('.toggle-password');
+    
+    toggleButtons.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('data-target');
+        const field = document.getElementById(targetId);
+        
+        if (field) {
+          const type = field.getAttribute('type') === 'password' ? 'text' : 'password';
+          field.setAttribute('type', type);
+          this.innerHTML = type === 'password' ? '<i class="bi bi-eye"></i>' : '<i class="bi bi-eye-slash"></i>';
+        }
+      });
+    });
+    
+    // Loading state on submit
+    const form = document.querySelector('form');
+    const submitBtn = document.getElementById('signupBtn');
+    
+    if (form && submitBtn) {
+      form.addEventListener('submit', function() {
+        const spinner = submitBtn.querySelector('.spinner-border');
+        const text = submitBtn.querySelector('.btn-text');
+        submitBtn.disabled = true;
+        spinner?.classList.remove('d-none');
+        text.textContent = 'Creating account...';
+      });
+    }
+  });
+</script>
 {% endblock %}

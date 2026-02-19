@@ -15,7 +15,7 @@ def wizard_start(request):
 
     # Show the wizard start page first
     if request.method == "GET":
-        return render(request, "UserPorile/wizard_start.html", {"profile": profile})
+        return render(request, "UserProfile/wizard_start.html", {"profile": profile})
 
     # If the user clicks "continue" on the wizard start page → go to personal step
     if request.method == "POST":
@@ -33,7 +33,7 @@ def personal(request):
             return redirect("profile:address")
     else:
         form = PersonalInfoForm(instance=profile)
-    return render(request, "UserPorile/personal.html", {"form": form})
+    return render(request, "UserProfile/personal.html", {"form": form})
 
 
 @login_required
@@ -47,7 +47,7 @@ def address(request):
             return redirect("profile:professional")
     else:
         form = AddressForm(instance=profile)
-    return render(request, "UserPorile/address.html", {"form": form})
+    return render(request, "UserProfile/address.html", {"form": form})
 
 
 @login_required
@@ -61,7 +61,7 @@ def professional(request):
             return redirect("profile:payment_bank")
     else:
         form = ProfessionalForm(instance=profile)
-    return render(request, "UserPorile/professional.html", {"form": form})
+    return render(request, "UserProfile/professional.html", {"form": form})
 
 
 @login_required
@@ -75,7 +75,7 @@ def payment_bank(request):
             return redirect("profile:payment_card")
     else:
         form = PaymentBankForm(instance=profile)
-    return render(request, "UserPorile/payment_bank.html", {"form": form})
+    return render(request, "UserProfile/payment_bank.html", {"form": form})
 
 
 @login_required
@@ -89,7 +89,7 @@ def payment_card(request):
             return redirect("profile:media")
     else:
         form = PaymentCardForm(instance=profile)
-    return render(request, "UserPorile/payment_card.html", {"form": form})
+    return render(request, "UserProfile/payment_card.html", {"form": form})
 
 
 @login_required
@@ -103,7 +103,7 @@ def media(request):
             return redirect("profile:review")
     else:
         form = MediaForm(instance=profile)
-    return render(request, "UserPorile/media.html", {"form": form})
+    return render(request, "UserProfile/media.html", {"form": form})
 
 
 @login_required
@@ -116,4 +116,4 @@ def review(request):
         messages.success(request, "Profile setup completed.")
         return redirect("secured:dashboard")
     # show a summary and a form with button to finalize
-    return render(request, "UserPorile/review.html", {"profile": profile})
+    return render(request, "UserProfile/review.html", {"profile": profile})

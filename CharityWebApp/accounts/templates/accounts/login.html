@@ -13,8 +13,8 @@
             <!-- Logo -->
             <div class="d-flex justify-content-center py-4">
               <a href="{% url 'pages:home' %}" class="logo d-flex align-items-center w-auto">
-                <img src="{% static 'assets/img/logo.png' %}" alt="Charity Portal Logo">
-                <span class="d-none d-lg-block">Charity Portal</span>
+                <img src="{% static 'assets/img/logo.png' %}" alt="Charity Portal Logo" style="max-height: 50px; margin-right: 10px;">
+                <span class="d-none d-lg-block" style="font-weight: 700; color: #012970; font-size: 20px;">Charity Portal</span>
               </a>
             </div>
             <!-- End Logo -->
@@ -31,29 +31,29 @@
               </div>
             {% endif %}
 
-            <div class="card mb-3">
-              <div class="card-body">
-                <div class="pt-4 pb-2">
-                  <h5 class="card-title text-center pb-0 fs-4">Welcome Back</h5>
-                  <p class="text-center small">Sign in to your account to continue</p>
+            <div class="card mb-3 shadow-lg border-0" style="border-radius: 12px; overflow: hidden;">
+              <div class="card-body p-5">
+                <div class="pt-2 pb-4">
+                  <h5 class="card-title text-center pb-0 fs-4" style="font-weight: 700; color: #012970;">Welcome Back</h5>
+                  <p class="text-center small mt-2" style="color: #6c757d;">Sign in to your account to continue</p>
                 </div>
 
-                <form method="post" class="row g-3 needs-validation" novalidate>
+                <form method="post" class="row g-4 needs-validation" novalidate>
                   {% csrf_token %}
 
                   {% if form.non_field_errors %}
-                    <div class="alert alert-danger w-100" role="alert">
+                    <div class="alert alert-danger w-100" role="alert" style="border-radius: 8px;">
                       {{ form.non_field_errors }}
                     </div>
                   {% endif %}
 
                   <div class="col-12">
-                    <label for="id_username" class="form-label">Email Address</label>
+                    <label for="id_username" class="form-label" style="font-weight: 600; color: #012970; font-size: 14px; margin-bottom: 8px;">Email Address</label>
                     <div class="input-group has-validation">
-                      <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                      <span class="input-group-text" style="background: #f8f9fa; border: 1.5px solid #e0e6ed; color: #4154f1; border-right: none;"><i class="bi bi-envelope"></i></span>
                       {{ form.username }}
                       {% if form.username.errors %}
-                        <div class="invalid-feedback d-block">
+                        <div class="invalid-feedback d-block" style="margin-top: 6px; font-size: 13px;">
                           {{ form.username.errors }}
                         </div>
                       {% endif %}
@@ -61,15 +61,15 @@
                   </div>
 
                   <div class="col-12">
-                    <label for="id_password" class="form-label">Password</label>
+                    <label for="id_password" class="form-label" style="font-weight: 600; color: #012970; font-size: 14px; margin-bottom: 8px;">Password</label>
                     <div class="input-group has-validation position-relative">
-                      <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                      <span class="input-group-text" style="background: #f8f9fa; border: 1.5px solid #e0e6ed; color: #4154f1; border-right: none;"><i class="bi bi-lock"></i></span>
                       {{ form.password }}
-                      <button class="btn btn-outline-secondary" type="button" id="togglePassword" title="Show/Hide Password">
+                      <button class="btn btn-outline-secondary toggle-btn" type="button" id="togglePassword" title="Show/Hide Password" style="border: 1.5px solid #e0e6ed; background: #f8f9fa; color: #4154f1; border-left: none;">
                         <i class="bi bi-eye"></i>
                       </button>
                       {% if form.password.errors %}
-                        <div class="invalid-feedback d-block">
+                        <div class="invalid-feedback d-block" style="margin-top: 6px; font-size: 13px;">
                           {{ form.password.errors }}
                         </div>
                       {% endif %}
@@ -78,27 +78,29 @@
 
                   <div class="col-12">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="remember" id="rememberMe">
-                      <label class="form-check-label" for="rememberMe">Remember me</label>
+                      <input class="form-check-input" type="checkbox" name="remember" id="rememberMe" style="border-color: #4154f1; cursor: pointer;">
+                      <label class="form-check-label" for="rememberMe" style="cursor: pointer; color: #444; font-size: 14px;">
+                        Remember me
+                      </label>
                     </div>
                   </div>
 
-                  <div class="col-12">
-                    <button class="btn btn-primary w-100" type="submit" id="loginBtn">
+                  <div class="col-12 pt-2">
+                    <button class="btn btn-primary w-100" type="submit" id="loginBtn" style="background: linear-gradient(135deg, #4154f1 0%, #5667f5 100%); border: none; padding: 12px 20px; font-weight: 600; font-size: 15px; letter-spacing: 0.5px; border-radius: 8px; transition: all 0.3s ease;">
                       <span class="btn-text">Sign In</span>
                       <span class="spinner-border spinner-border-sm d-none ms-2" role="status" aria-hidden="true"></span>
                     </button>
                   </div>
 
-                  <div class="col-12">
-                    <p class="small mb-0">Don't have an account? <a href="{% url 'accounts:signup' %}">Create one</a></p>
+                  <div class="col-12 text-center">
+                    <p class="small mb-0" style="color: #6c757d;">Don't have an account? <a href="{% url 'accounts:signup' %}" style="color: #4154f1; font-weight: 600; text-decoration: none;">Create one</a></p>
                   </div>
                 </form>
               </div>
             </div>
 
-            <div class="credits small text-center">
-              <a href="{% url 'pages:home' %}">← Back to Home</a>
+            <div class="credits small text-center mt-4">
+              <a href="{% url 'pages:home' %}" style="color: #4154f1; text-decoration: none; font-weight: 500;">← Back to Home</a>
             </div>
           </div>
         </div>
@@ -108,18 +110,122 @@
 </main>
 
 <style>
-  #togglePassword {
-    border-left: none;
-    border-right: 1px solid #dee2e6;
+  /* Modern Input Field Styling */
+  #id_username,
+  #id_password {
+    border: 1.5px solid #e0e6ed !important;
+    border-radius: 8px;
+    padding: 11px 14px !important;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background-color: #fff;
   }
-  
-  #togglePassword:hover {
-    background-color: #f8f9fa;
+
+  #id_username:focus,
+  #id_password:focus {
+    border-color: #4154f1 !important;
+    box-shadow: 0 0 0 3px rgba(65, 84, 241, 0.1) !important;
+    background-color: #fff;
   }
-  
-  .btn[type="submit"]:disabled {
+
+  #id_username::placeholder,
+  #id_password::placeholder {
+    color: #a7b1c2;
+  }
+
+  /* Input Group Styling */
+  .input-group-text {
+    background: #f8f9fa !important;
+    border: 1.5px solid #e0e6ed !important;
+    border-radius: 8px 0 0 8px;
+    color: #4154f1;
+  }
+
+  .input-group > .form-control {
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* Toggle Button Styling */
+  .toggle-btn {
+    background: #f8f9fa !important;
+    border: 1.5px solid #e0e6ed !important;
+    color: #4154f1 !important;
+    border-radius: 0 8px 8px 0 !important;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+  }
+
+  .toggle-btn:hover {
+    background-color: #e8ecf6 !important;
+    border-color: #4154f1 !important;
+  }
+
+  .toggle-btn:focus {
+    box-shadow: none !important;
+  }
+
+  /* Card Styling */
+  .card {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  /* Button Styling */
+  #loginBtn {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(65, 84, 241, 0.3);
+    font-weight: 600;
+  }
+
+  #loginBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(65, 84, 241, 0.4);
+  }
+
+  #loginBtn:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  #loginBtn:disabled {
     opacity: 0.7;
     pointer-events: none;
+  }
+
+  /* Form Check Styling */
+  .form-check-input {
+    border-color: #ddd;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .form-check-input:checked {
+    background-color: #4154f1;
+    border-color: #4154f1;
+  }
+
+  .form-check-input:focus {
+    border-color: #4154f1;
+    box-shadow: 0 0 0 0.2rem rgba(65, 84, 241, 0.25);
+  }
+
+  /* Alert Styling */
+  .alert {
+    border-radius: 8px;
+    border: none;
+  }
+
+  .alert-danger {
+    background-color: #fff5f5;
+    color: #c3212b;
+  }
+
+  .alert-success {
+    background-color: #f1f9f1;
+    color: #155724;
   }
 </style>
 
